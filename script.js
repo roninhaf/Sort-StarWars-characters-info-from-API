@@ -68,19 +68,13 @@ req.onload=function(){
             });
         
         function displayRes() {
+            var i=0;
             sortVar.forEach(a => {
-                const card = document.createElement('div');
-                card.setAttribute('class', 'card');
+                console.log(container.childNodes)
+                container.childNodes[i].childNodes[0].textContent = a.name;
                 
-                const h1 = document.createElement('h1');
-                h1.textContent = a.name;
-                
-                const p = document.createElement('p');
-                p.textContent = `${a.height}cm ${a.mass}kgs Appears in ${a.films.length} movies`;
-                
-                container.appendChild(card);
-                card.appendChild(h1);
-                card.appendChild(p);
+                container.childNodes[i].childNodes[1].textContent = `${a.height}cm ${a.mass}kgs Appears in ${a.films.length} movies`;
+                i++;
             })
         }
         
