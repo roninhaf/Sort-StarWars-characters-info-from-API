@@ -53,10 +53,10 @@ req.open("GET",'https://swapi.co/api/people/',true);
 req.send();
 req.onload=function(){
     
-    //turn infos into an object
-    const data=JSON.parse(req.responseText);
-
     if (req.status >= 200 && req.status < 400) {
+        
+        //turn infos into an object
+        const data=JSON.parse(req.responseText);
         
         //default sort algo
         var sortVar = data.results.sort((a,b)=>a.name>b.name);
