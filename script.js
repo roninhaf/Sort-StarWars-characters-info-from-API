@@ -102,7 +102,6 @@ function displayTriggerResult() {
     
     var i=0;
     sortVar.forEach(a => {
-        //console.log(container.childNodes)
         container.childNodes[i].childNodes[0].textContent = a.name;
         html = `<ul><li>${a.height}cm</li><li>${a.mass}kgs</li><li>Appears in ${a.films.length} movies</li></ul>`;
         container.childNodes[i].childNodes[1].innerHTML = html;
@@ -113,29 +112,25 @@ function displayTriggerResult() {
     //select new sort algo depending on button clicked on
 function triggerSort(id) {
     
-    //console.log(typeof id);
     switch (id.target.id) {
         case 'height':
         sortVar = data.results.sort((a,b)=>Number(a.height)>Number(b.height));
-        //console.log(sortVar);
         break;
         case 'mass':
         sortVar = data.results.sort((a,b)=>Number(a.mass)>Number(b.mass));
-        //console.log(sortVar);
         break;
         case 'film':
         sortVar = data.results.sort((a,b)=>a.films.length>b.films.length);
-        //console.log(sortVar);
         break;
         case 'name':
         sortVar = data.results.sort((a,b)=>a.name>b.name);
-        //console.log(sortVar);
         break;
         default:
         sortVar = data.results.sort((a,b)=>a.name>b.name);
     }
-    //console.log(sortVar);
+    
     displayTriggerResult();
+
 }
 
 buttonContainer.addEventListener('click', triggerSort);
