@@ -87,7 +87,7 @@ function displayDefaultCards() {
         h1.textContent = a.name;
         
         const p = document.createElement('p');
-        var html = `<ul><li>${a.height}cm</li><li>${a.mass}kgs</li><li>Appears in ${a.films.length} movies</li></ul>`;
+        var html = `<ul><li>Height: ${a.height}cm</li><li>Mass: ${a.mass}kgs</li><li>Appears in ${a.films.length} movies</li></ul>`;
         p.innerHTML = html;
         
         //Adding created elements to container so they will show on screen
@@ -103,30 +103,29 @@ function displayTriggerResult() {
     var i=0;
     sortVar.forEach(a => {
         container.childNodes[i].childNodes[0].textContent = a.name;
-        html = `<ul><li>${a.height}cm</li><li>${a.mass}kgs</li><li>Appears in ${a.films.length} movies</li></ul>`;
+        html = `<ul><li>Height: ${a.height}cm</li><li>Mass: ${a.mass}kgs</li><li>Appears in ${a.films.length} movies</li></ul>`;
         container.childNodes[i].childNodes[1].innerHTML = html;
         i++;
     })
 }
-    
-    //select new sort algo depending on button clicked on
-function triggerSort(id) {
-    
-    switch (id.target.id) {
+
+//select new sort algo depending on button clicked on
+function triggerSort(event) {
+    switch (event.target.id) {
         case 'height':
-        sortVar = data.results.sort((a,b)=>Number(a.height)>Number(b.height));
+        sortVar = data.results.sort((a,b) => Number(a.height) > Number(b.height) ? 1 : -1);
         break;
         case 'mass':
-        sortVar = data.results.sort((a,b)=>Number(a.mass)>Number(b.mass));
+        sortVar = data.results.sort((a,b) => Number(a.mass) > Number(b.mass) ? 1 : -1);
         break;
         case 'film':
-        sortVar = data.results.sort((a,b)=>a.films.length>b.films.length);
+        sortVar = data.results.sort((a,b) => a.films.length > b.films.length ? 1 : -1);
         break;
         case 'name':
-        sortVar = data.results.sort((a,b)=>a.name>b.name);
+        sortVar = data.results.sort((a,b) => a.name > b.name ? 1 : -1);
         break;
         default:
-        sortVar = data.results.sort((a,b)=>a.name>b.name);
+        sortVar = data.results.sort((a,b) => a.name > b.name ? 1 : -1);
     }
     
     displayTriggerResult();

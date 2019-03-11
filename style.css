@@ -1,41 +1,71 @@
 #root {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
   }
 
-  html {
-    background: url(https://images5.alphacoders.com/725/725049.jpg) center;
-    background-size: auto;
-  }
+@font-face {
+    font-family: star;
+    src: url(Starjedi.ttf);
+}
 
-  h1 {
-    color : #ffc400;
-    text-shadow: 2px 1px rgba(0, 0, 0, 0.356);
-  }
-  
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .buttonContainer {
-    display: flex;
-    flex-wrap: wrap;
-  }
+html {
+  background: url(https://images5.alphacoders.com/725/725049.jpg) center;
+  background-size: auto;
+}
 
+h1 {
+  color : #ffc400;
+  text-shadow: 2px 1px rgba(0, 0, 0, 0.356);
+  /* font-family: star; */
+}
+
+p {
+  font-family: star;
+  color: #1a1a1a;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  background-color: #ffc400;
+  border-radius: 25px;
+  border: none;
+  font-family: star;
+  color: #1a1a1a;
+}
+
+ul {
+  list-style-type: none;
+  
+}
+
+button:hover {
+  background-color: #ffc4007a;
+}
+
+.card {
+  margin: 1rem;
+  background-color: #ffffff1c;
+  border-radius: 25px;
+  border: 1px solid #ffc400;
+}
+
+@media screen and (min-width: 600px) {
   .card {
-    margin: 1rem;
-    background-color: #ffffff1c;
+    flex: 1 1 calc(50% - 2rem);
   }
-  
-  @media screen and (min-width: 600px) {
-    .card {
-      flex: 1 1 calc(50% - 2rem);
-    }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    flex: 1 1 calc(33% - 2rem);
   }
-  
-  @media screen and (min-width: 900px) {
-    .card {
-      flex: 1 1 calc(33% - 2rem);
-    }
-  }
+}
