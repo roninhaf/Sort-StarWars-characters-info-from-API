@@ -54,24 +54,27 @@ var sortVar;
 var data = {};
 
 //Go get the infos
-req=new XMLHttpRequest();
-req.open("GET",'https://swapi.co/api/people/',true);
-req.send();
-req.onload = function retreiveJson(){
-    
-        if (req.status >= 200 && req.status < 400) {
-            
-            //turn infos into an object
-            data = JSON.parse(req.responseText);
+fetch('https://swapi.co/api/people/')
+  .then(
+    function(response) {
+      if (response.status !== 200) {
+        
+        const errorMessage = document.createElement('h1');
+        errorMessage.textContent = `Nope ! The force is not with you today :-/ Status Code: `+response.status;
+        app.appendChild(errorMessage);
+        return;
+      }
 
-            displayDefaultCards();
-            
-        } else {
-            const errorMessage = document.createElement('h1');
-            errorMessage.textContent = `Nope ! The force is not with you today :-/`;
-            app.appendChild(errorMessage);
-        }
-    };
+      // Examine the text in the response
+      response.json().then(function(retreived) {
+        data = retreived;
+        displayDefaultCards();
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
 
 function displayDefaultCards() {
     
