@@ -65,7 +65,6 @@ fetch('https://swapi.co/api/people/')
         return;
       }
 
-      // Examine the text in the response
       response.json().then(function(retreived) {
         data = retreived;
         displayDefaultCards();
